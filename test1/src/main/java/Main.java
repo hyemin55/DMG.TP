@@ -39,6 +39,7 @@ public class Main {
                         case 1:
                             ProductRepository productRepository = new ProductRepository();
                             List<Product> prolist = productRepository.selectproduct();
+                            prolist.stream().forEach(System.out::println);
                             break;
                         case 2:
 

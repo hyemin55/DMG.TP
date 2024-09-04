@@ -1,4 +1,4 @@
-use alchol_retail_store;
+use alcohol_retail_store;
 
 insert into product values(1,'19 CrimesThe',3,'Uprising Red','호주',750,'풍부한 블랙베리와 체리 향, 스파이시한 노트가 특징인 풀 바디 레드 와인');
 insert into product values(2,'Chateau Margaux',3,'Margaux 2015','프랑스',750,'고급스러운 캐버네 소비뇽과 멜롯의 블렌드, 섬세한 타닌과 복합적인 향미');
