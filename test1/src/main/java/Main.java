@@ -39,14 +39,7 @@ public class Main {
                         case 1:
                             ProductRepository productRepository = new ProductRepository();
                             List<Product> prolist = productRepository.selectproduct();
-                            int i = 0;
-                            while (true) {
-                                if (i == prolist.size()) {
-                                    break;
-                                }
-                                System.out.println(prolist.get(i));
-                                i++;
-                            }
+                            prolist.stream().forEach(System.out::println);
                             break;
                         case 2:
 
@@ -54,7 +47,7 @@ public class Main {
                         case 3:
                             WholesalerRepository wholesalerRepository = new WholesalerRepository();
                             List<Wholesaler> wrlist = wholesalerRepository.selectwholesaler();
-                            i = 0;
+                            int i = 0;
                             while (true) {
                                 if (i == wrlist.size()) {
                                     break;
