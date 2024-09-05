@@ -33,7 +33,7 @@ public class ProductRepository {
                 list.add(product);
             } return list;
         }catch (Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
