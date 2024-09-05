@@ -1,6 +1,9 @@
 import domain.Product;
+import domain.PurchaseProduct;
+import domain.PurchaseProductJoinQuery;
 import domain.Wholesaler;
 import repository.ProductRepository;
+import repository.PurchaseProductRepository;
 import repository.WholesalerRepository;
 
 import java.util.List;
@@ -34,11 +37,11 @@ public class Main {
                             3. 직원조회
                             4. 업체조회
                             """);
-                    int input2 = scan.nextInt();
-                    switch (input2) {
+                    switch (scan.nextInt()) {
                         case 1:
                             ProductRepository productRepository = new ProductRepository();
                             List<Product> prolist = productRepository.selectproduct();
+<<<<<<< HEAD
                             int i = 0;
                             while (true) {
                                 if (i == prolist.size()) {
@@ -47,12 +50,45 @@ public class Main {
                                 System.out.println(prolist.get(i));
                                 i++;
                             }
+=======
+                            prolist.stream().forEach(System.out::println);
+>>>>>>> main
                             break;
                         case 2:
+                            while (true) {
+                                boolean isExist = false;
+                                System.out.println("""
+                                        조회하실 기준을 선택해 주세요.
+                                        1. 발주날짜(월단위)
+                                        2. 상품명
+                                        3. 직원명
+                                        4. 공장직원명
+                                        5. 뒤로가기
+                                        """);
 
-                            break;
+                                switch (scan.nextInt()) {
+                                    case 1:
+                                        System.out.println("조회하실 연도 입력해주세요");
+                                        String year = scan.next();
+                                        System.out.println("조회하실 월을 입력해주세요");
+                                        String month = scan.next();
+                                        PurchaseProductRepository purchaseProductRepository = new PurchaseProductRepository();
+                                        List<PurchaseProductJoinQuery> pplist = purchaseProductRepository.selectPurchaseProduct(year, month);
+
+                                        pplist.stream().forEach(System.out::println);
+                                        break;
+                                    case 2:
+                                    case 5:
+                                        isExist = true;
+                                        break;
+                                }
+
+                                if (isExist) break;
+                            }
+
                         case 3:
                             WholesalerRepository wholesalerRepository = new WholesalerRepository();
+<<<<<<< HEAD
                             List<Wholesaler> wrlist = wholesalerRepository.selectwholesaler();
                             i = 0;
                             while (true) {
@@ -62,6 +98,9 @@ public class Main {
                                 System.out.println(wrlist.get(i));
                                 i++;
                             }
+=======
+                            wholesalerRepository.selectwholesaler();
+>>>>>>> main
 
                             break;
                         case 4:

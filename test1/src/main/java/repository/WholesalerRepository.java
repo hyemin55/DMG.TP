@@ -10,55 +10,41 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WholesalerRepository {
+public class WholesalerRepository extends JDBCTemplate {
     private static Logger LOG = LoggerFactory.getLogger(WholesalerRepository.class);
 
-    private static HikariDataSource dataSource = HikariCP.createDataSource();
 
-    public List<Wholesaler> selectwholesaler() throws ClassNotFoundException {
+    public void selectwholesaler() throws ClassNotFoundException {
+        LOG.info("DB connection success");
+        execute("select * from wholesaler");
+    }
 
-        // primitive type 기본타입
-        // int, double, boolean, float, char
-        // reference type 참조타입
-        // Integer, String, int[], char[].
+    @Override
+    protected void handleResultSet(ResultSet rs) throws SQLException {
+        List<Wholesaler> list = new ArrayList<>();
+        while (rs.next()) {
+            Wholesaler wholesaler = new Wholesaler();
+            wholesaler.setW_id(rs.getInt("w_id"));
+            wholesaler.setW_department(rs.getString("w_department"));
+            wholesaler.setW_name(rs.getString("w_name"));
+            wholesaler.setW_phone(rs.getString("w_phone"));
+            wholesaler.setW_jobTitle(rs.getString("w_jobTitle"));
+            list.add(wholesaler);
 
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        try {
-            LOG.info("DB connection success");
-            conn = dataSource.getConnection();
-            pstmt = conn.prepareStatement("select * from wholesaler");
-            //sql 구문 작성
-            ResultSet rs = pstmt.executeQuery();
-
-            List<Wholesaler> list = new ArrayList<>();
-            while(rs.next()){
-                Wholesaler wholesaler = new Wholesaler();
-                wholesaler.setW_id(rs.getInt("w_id"));
-                wholesaler.setW_department(rs.getString("w_department"));
-                wholesaler.setW_name(rs.getString("w_name"));
-                wholesaler.setW_phone(rs.getString("w_phone"));
-                wholesaler.setW_jobTitle(rs.getString("w_jobTitle"));
-
-                list.add(wholesaler);
+        }
+        int i = 0;
+        while (true) {
+            if (i == list.size()) {
+                break;
             }
-            return list;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                pstmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println(list.get(i));
+            i++;
         }
 
     }
 
+    @Override
+    protected void setParameter(PreparedStatement pstmt) {
+
+    }
 }
