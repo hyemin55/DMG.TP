@@ -3,7 +3,13 @@ package repository;
 import com.zaxxer.hikari.HikariDataSource;
 import config.HikariCP;
 import domain.Product;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
@@ -35,7 +41,7 @@ public class ProductRepository {
                 list.add(product);
             } return list;
         }catch (Exception e){
-            e.parameta();
+            e.printStackTrace();
         }
     }
 }
