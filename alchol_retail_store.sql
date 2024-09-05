@@ -1,4 +1,4 @@
-use alchol_retail_store;
+use alcohol_retail_store;
 
 
 create table `product` (
