@@ -62,7 +62,6 @@ public class Main {
                                         String month = scan.next();
                                         PurchaseProductRepository purchaseProductRepository = new PurchaseProductRepository(year, month);
                                         purchaseProductRepository.selectPurchaseProduct();
-
                                         break;
                                     case 2:
                                     case 5:
