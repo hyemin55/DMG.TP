@@ -7,8 +7,9 @@ create table `product` (
 	`p_kind` char(1) NOT NULL COMMENT '1:위스키, 2:럼, 3:와인, 4:증류주, 5:맥주, 6:사케',
 	`p_name` varchar(100) NOT NULL,
 	`p_country` varchar(100) NOT NULL,
-	`pp_capacity` INT NOT NULL,
-    `pp_etc` TEXT COMMENT '제품상세설명'
+	`p_capacity` INT NOT NULL,
+--    `p_amount` INT NOT NULL default 0,
+    `p_etc` TEXT COMMENT '제품상세설명'
 );
 
 create table `manufacturer` (
