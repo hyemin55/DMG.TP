@@ -1,12 +1,7 @@
-import domain.Product;
-import domain.PurchaseProduct;
-import domain.PurchaseProductJoinQuery;
-import domain.Wholesaler;
 import repository.ProductRepository;
 import repository.PurchaseProductRepository;
+import repository.PurchaseProductRepository3;
 import repository.WholesalerRepository;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -64,6 +59,11 @@ public class Main {
                                         purchaseProductRepository.selectPurchaseProduct();
                                         break;
                                     case 2:
+                                    case 3:
+                                        System.out.println("조회하실 직원명을 입력해주세요");
+                                        String w_name = scan.next();
+                                        PurchaseProductRepository3 purchaseProductRepository3 = new PurchaseProductRepository3(w_name);
+                                    case 4:
                                     case 5:
                                         isExist = true;
                                         break;
