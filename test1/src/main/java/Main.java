@@ -40,19 +40,7 @@ public class Main {
                     switch (scan.nextInt()) {
                         case 1:
                             ProductRepository productRepository = new ProductRepository();
-                            List<Product> prolist = productRepository.selectproduct();
-<<<<<<< HEAD
-                            int i = 0;
-                            while (true) {
-                                if (i == prolist.size()) {
-                                    break;
-                                }
-                                System.out.println(prolist.get(i));
-                                i++;
-                            }
-=======
-                            prolist.stream().forEach(System.out::println);
->>>>>>> main
+                            productRepository.selectproduct();
                             break;
                         case 2:
                             while (true) {
@@ -72,10 +60,8 @@ public class Main {
                                         String year = scan.next();
                                         System.out.println("조회하실 월을 입력해주세요");
                                         String month = scan.next();
-                                        PurchaseProductRepository purchaseProductRepository = new PurchaseProductRepository();
-                                        List<PurchaseProductJoinQuery> pplist = purchaseProductRepository.selectPurchaseProduct(year, month);
-
-                                        pplist.stream().forEach(System.out::println);
+                                        PurchaseProductRepository purchaseProductRepository = new PurchaseProductRepository(year, month);
+                                        purchaseProductRepository.selectPurchaseProduct();
                                         break;
                                     case 2:
                                     case 5:
@@ -85,22 +71,10 @@ public class Main {
 
                                 if (isExist) break;
                             }
-
+                            break;
                         case 3:
                             WholesalerRepository wholesalerRepository = new WholesalerRepository();
-<<<<<<< HEAD
-                            List<Wholesaler> wrlist = wholesalerRepository.selectwholesaler();
-                            i = 0;
-                            while (true) {
-                                if (i == wrlist.size()) {
-                                    break;
-                                }
-                                System.out.println(wrlist.get(i));
-                                i++;
-                            }
-=======
                             wholesalerRepository.selectwholesaler();
->>>>>>> main
 
                             break;
                         case 4:

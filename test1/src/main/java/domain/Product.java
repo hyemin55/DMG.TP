@@ -14,5 +14,6 @@ public class Product {
     private String p_name;
     private String p_conutry;
     private String p_capacity;
+    private int p_amount;
     private String p_etc;
 }

@@ -29,5 +29,5 @@ public abstract class JDBCTemplate {
 
     }
     protected abstract void handleResultSet(ResultSet rs) throws SQLException;
-    protected abstract void setParameter(PreparedStatement pstmt);
+    protected abstract void setParameter(PreparedStatement pstmt) throws SQLException;
 }
