@@ -8,22 +8,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PurchaseProductRepository3 extends JDBCTemplate {
+public class PurchaseProductRepository4 extends JDBCTemplate {
 
-    private final String w_name;
+    private final String m_name;
 
-    public PurchaseProductRepository3(String w_name) {
-        this.w_name = w_name;
+    public PurchaseProductRepository4(String m_name) {
+        this.m_name = m_name;
     }
 
-    public void selectPurchaseProduct3() {
-        execute("select * from selectpurchaseproduct where w_name like ?");
+    public void selectPurchaseProduct4() {
+        execute("select * from selectpurchaseproduct where m_name like ?");
     }
 
     @Override
     protected void handleResultSet(ResultSet rs) throws SQLException {
         List<SelectPurchaseProduct> list = new ArrayList<>();
-        while(rs.next()){
+        while (rs.next()) {
             SelectPurchaseProduct selectPurchaseProduct = new SelectPurchaseProduct();
             selectPurchaseProduct.setPp_id(rs.getInt("pp_id"));
             selectPurchaseProduct.setPp_orderDate(rs.getDate("pp_orderDate"));
@@ -43,6 +43,6 @@ public class PurchaseProductRepository3 extends JDBCTemplate {
 
     @Override
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
-        pstmt.setString(1,"%"+ w_name+"%");
+        pstmt.setString(1,"%"+ m_name+"%");
     }
 }

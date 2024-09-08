@@ -6,6 +6,5 @@ public class Main2 {
 
         String  color = smartPhone.getColor();
         System.out.println(color);
-
     }
 }

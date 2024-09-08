@@ -1,7 +1,5 @@
-import repository.ProductRepository;
-import repository.PurchaseProductRepository;
-import repository.PurchaseProductRepository3;
-import repository.WholesalerRepository;
+import repository.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -24,6 +22,7 @@ public class Main {
 
             switch (input) {
                 case 1:
+                    OrdersRepository ordersRepository = new OrdersRepository();
                     break;
                 case 2:
                     System.out.println("""
@@ -63,7 +62,14 @@ public class Main {
                                         System.out.println("조회하실 직원명을 입력해주세요");
                                         String w_name = scan.next();
                                         PurchaseProductRepository3 purchaseProductRepository3 = new PurchaseProductRepository3(w_name);
+                                        purchaseProductRepository3.selectPurchaseProduct3();
+                                        break;
                                     case 4:
+                                        System.out.println("조회하실 공장명을 입력해주세요");
+                                        String m_name = scan.next();
+                                        PurchaseProductRepository4 purchaseProductRepository4 = new PurchaseProductRepository4(m_name);
+                                        purchaseProductRepository4.selectPurchaseProduct4();
+                                        break;
                                     case 5:
                                         isExist = true;
                                         break;
