@@ -1,10 +1,6 @@
-import domain.Product;
-import domain.PurchaseProduct;
-import domain.PurchaseProductJoinQuery;
-import domain.Wholesaler;
-import repository.ProductRepository;
-import repository.PurchaseProductRepository;
-import repository.WholesalerRepository;
+import domain.*;
+import repository.*;
+import repository.ManufacturerRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -64,6 +60,13 @@ public class Main {
                                         purchaseProductRepository.selectPurchaseProduct();
                                         break;
                                     case 2:
+                                        ProductRepository ppppp = new ProductRepository();
+                                        ppppp.selectproduct();
+                                        System.out.println("조회하실 상품 id을 골라주세요");
+                                        int p_id= scan.nextInt();
+                                        PP_PnameRepository pp_pnameRepository = new PP_PnameRepository(p_id);
+                                        pp_pnameRepository.selectPP_PnameRepository();
+
                                     case 5:
                                         isExist = true;
                                         break;
@@ -78,6 +81,8 @@ public class Main {
 
                             break;
                         case 4:
+                            ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+                            manufacturerRepository.selectManufacturer();
 
                             break;
                         default:
