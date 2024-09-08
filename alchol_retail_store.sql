@@ -48,3 +48,15 @@ CREATE TABLE `purchaseProduct` (
     FOREIGN KEY (`p_id`) REFERENCES `product`(`p_id`)
 );
 
+
+-- 주문 테이블 (시뮬레이션 고객 주문 기록)
+CREATE TABLE customerOrders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,     -- 주문 고유 ID
+    simulated_customer_id INT NOT NULL,          -- 시뮬레이션된 고객 ID (쓰레드나 고객 번호)
+    p_id INT,                              -- 주문한 제품 ID
+    quantity INT NOT NULL,                       -- 주문 수량
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- 주문 날짜 및 시간
+    status ENUM('SUCCESS', 'FAILED') NOT NULL,   -- 주문 상태 (성공 또는 실패)
+    
+    FOREIGN KEY (p_id) REFERENCES product(p_id) ON DELETE CASCADE
+);
