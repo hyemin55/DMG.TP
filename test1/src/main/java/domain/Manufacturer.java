@@ -1,5 +1,12 @@
 package domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class Manufacturer {
     private int m_id;
     private String m_businessID;

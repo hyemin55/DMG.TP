@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class SwitchContext {
-    static final Scanner SCANNER = new Scanner(System.in);
+    public static final Scanner SCANNER = new Scanner(System.in);
 //    private State state;
     private Stack<State> stateStack = new Stack<>();
     private boolean isRunning = true;

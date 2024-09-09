@@ -5,7 +5,7 @@ public class InitState implements State {
     @Override
     public void handle(SwitchContext switchContext, int input) {
         if (input == 1) {
-
+            switchContext.setState(new InsertOrderState());
         } else if (input == 2) {
             switchContext.setState(new InquiriesState());
         } else {
