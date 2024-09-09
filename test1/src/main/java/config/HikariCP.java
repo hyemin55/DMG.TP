@@ -8,9 +8,9 @@ public class HikariCP {
 
     public static HikariDataSource createDataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3307/alcohol_retail_store");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/alcohol_retail_store");
         config.setUsername("root");
-        config.setPassword("1234");
+        config.setPassword("12341234");
 
         // 추가 설정 (필요에 따라 조정)
         config.setMaximumPoolSize(10); // 최대 커넥션 수
