@@ -47,3 +47,8 @@ CREATE TABLE `purchaseProduct` (
     FOREIGN KEY (`p_id`) REFERENCES `product`(`p_id`)
 );
 
+create view selectPurchaseProduct as
+select pp.pp_id, pp.pp_orderDate, pp.pp_receivedDate, m.m_name, w.w_name, p.p_kind, p.p_brand, p.p_capacity, pp.pp_costPrice, p.p_name, pp.pp_receivedCount
+from manufacturer m, product p, purchaseProduct pp, wholesaler w
+where m.m_id = pp.m_id and p.p_id = pp.p_id and w.w_id = pp.w_id
+order by pp.pp_id;
