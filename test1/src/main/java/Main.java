@@ -22,7 +22,7 @@ public class Main {
 
             switch (input) {
                 case 1:
-                    OrdersRepository ordersRepository = new OrdersRepository();
+//                    OrdersRepository ordersRepository = new OrdersRepository();
                     break;
                 case 2:
                     System.out.println("""

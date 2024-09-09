@@ -17,7 +17,7 @@ public class PurchaseProductRepository3 extends JDBCTemplate {
     }
 
     public void selectPurchaseProduct3() {
-        execute("select * from selectpurchaseproduct where w_name like ?");
+        execute("select * from selectPurchaseProduct where w_name like ?");
     }
 
     @Override

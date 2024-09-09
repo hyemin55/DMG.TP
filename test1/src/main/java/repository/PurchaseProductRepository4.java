@@ -17,12 +17,12 @@ public class PurchaseProductRepository4 extends JDBCTemplate {
     }
 
     public void selectPurchaseProduct4() {
-        execute("select * from selectpurchaseproduct where m_name like ?");
+        execute("select * from selectPurchaseProduct where m_name like ?");
     }
 
     @Override
     protected void handleResultSet(ResultSet rs) throws SQLException {
-        List<SelectPurchaseProduct> list = new ArrayList<>();
+        List<SelectPurchaseProduct > list = new ArrayList<>();
         while (rs.next()) {
             SelectPurchaseProduct selectPurchaseProduct = new SelectPurchaseProduct();
             selectPurchaseProduct.setPp_id(rs.getInt("pp_id"));
