@@ -47,7 +47,8 @@ public class Main {
                                         2. 상품명
                                         3. 직원명
                                         4. 공장직원명
-                                        5. 뒤로가기
+                                        5. 발주내역 삭제
+                                        6. 뒤로가기
                                         """);
 
                                 switch (scan.nextInt()) {
@@ -66,8 +67,15 @@ public class Main {
                                         int p_id= scan.nextInt();
                                         PP_PnameRepository pp_pnameRepository = new PP_PnameRepository(p_id);
                                         pp_pnameRepository.selectPP_PnameRepository();
-
                                     case 5:
+                                        ProductRepository vvs = new ProductRepository();
+                                        vvs.selectproduct();
+                                        System.out.println("삭제하실 상품 id을 골라주세요");
+                                         p_id= scan.nextInt();
+                                        DeleteRepository deleteRepository = new DeleteRepository(p_id);
+                                        deleteRepository.delete();
+
+                                    case 6:
                                         isExist = true;
                                         break;
                                 }
