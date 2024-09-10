@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductRepository extends JDBCTemplate{
     private static HikariDataSource dataSource = HikariCP.createDataSource();
 
-    public void selectproduct() {
+    public void selectProduct() {
     execute("select * from product");
     }
 

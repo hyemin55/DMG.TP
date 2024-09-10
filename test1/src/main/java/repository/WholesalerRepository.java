@@ -14,7 +14,7 @@ public class WholesalerRepository extends JDBCTemplate {
     private static Logger LOG = LoggerFactory.getLogger(WholesalerRepository.class);
 
 
-    public void selectwholesaler() throws ClassNotFoundException {
+    public void selectWholesaler() {
         LOG.info("DB connection success");
         execute("select * from wholesaler");
     }

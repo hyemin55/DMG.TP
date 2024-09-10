@@ -19,13 +19,13 @@ public class ManufacturerRepository extends JDBCTemplate{
     @Override
     protected void handleResultSet(ResultSet rs) throws SQLException {
         List<Manufacturer> list = new ArrayList<>();
-        while(rs.next()){
+        while (rs.next()) {
             Manufacturer manufacturer = new Manufacturer();
             manufacturer.setM_id(rs.getInt("m_id"));
             manufacturer.setM_businessID(rs.getString("m_businessID"));
             manufacturer.setM_phone(rs.getString("m_phone"));
             manufacturer.setM_department(rs.getString("m_department"));
-            manufacturer.setM_jobTitle(rs.getString("m_jobtitle"));
+            manufacturer.setM_jobTitle(rs.getString("m_jobTitle"));
             manufacturer.setM_adress(rs.getString("m_adress"));
             manufacturer.setM_name(rs.getString("m_name"));
             manufacturer.setM_person(rs.getString("m_person"));
@@ -35,6 +35,7 @@ public class ManufacturerRepository extends JDBCTemplate{
     }
 
     @Override
-    protected void setParameter(PreparedStatement pstmt) throws SQLException{}
+    protected void setParameter(PreparedStatement pstmt) throws SQLException {
 
+    }
 }
