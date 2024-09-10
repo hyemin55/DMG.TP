@@ -16,6 +16,12 @@ import java.util.Random;
 public class OrderRepository {
     private static HikariDataSource dataSource = HikariCP.createDataSource();
 
+    /**
+     *
+     * @param w_id 도매직원 ID
+     * @param m_id 공장직원 ID
+     * @param orderItemDtos 주문한 제품ID 및 수량
+     */
     public void insertOrder(int w_id, int m_id, List<OrderItemDto> orderItemDtos) {
 
         Connection conn = null;
@@ -51,6 +57,16 @@ public class OrderRepository {
                 pstmt.setInt(9, w_id);
                 pstmt.setInt(5, orderItem.getP_amount());
                 pstmt.setInt(10, orderItem.getP_id());
+                pstmt.executeUpdate();
+
+            }
+
+            for (OrderItemDto orderItemDto : orderItemDtos) {
+                pstmt = conn.prepareStatement(
+                        "update product set p_amount = ? where p_id = ?"
+                );
+                pstmt.setInt(1, orderItemDto.getP_amount());
+                pstmt.setInt(2, orderItemDto.getP_id());
                 pstmt.executeUpdate();
             }
 
