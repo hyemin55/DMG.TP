@@ -118,7 +118,7 @@ public class Main {
                                 int updateppid = scan.nextInt();
                                 System.out.println("수량을 입력해주세요.");
                                 int updateppreceivedCount = scan.nextInt();
-                                UpdatePurchaseProduct updatePurchaseProduct = new UpdatePurchaseProduct(updateppid, updateppreceivedCount);
+                                new UpdatePurchaseProduct(updateppid, updateppreceivedCount);
                                 break;
                             case 2:
                                 System.out.println("사업자 번호를 입력해주세요.");
@@ -132,11 +132,11 @@ public class Main {
                                 System.out.println("담당자 연락처를 입력해주세요.");
                                 String mPhone = scan.next();
 //                                선택사항으로 입력 안하는 방법 추가 어떻게?
-                                System.out.println("담당자 부서를 입력해주세요.(선택사항: 모르면 0을 입력해주세요)");
+                                System.out.println("담당자 부서를 입력해주세요.(선택사항: 기입하지 않으려면 0을 입력해주세요)");
                                 String mDepartment = scan.next().equals("0") ? "" : scan.next();
-                                System.out.println("담당자 직급을 입력해주세요.");
-                                String mJobTitle = scan.next();
-                                addmanufacturer addmanufacturer = new addmanufacturer(mBusinessID,mName,mAdress,mPerson,mPhone,mDepartment,mJobTitle);
+                                System.out.println("담당자 직급을 입력해주세요.(선택사항: 기입하지 않으려면 0을 입력해주세요)");
+                                String mJobTitle = scan.next().equals("0") ? "" : scan.next();
+                                new addmanufacturer(mBusinessID,mName,mAdress,mPerson,mPhone,mDepartment,mJobTitle);
                             case 3:
                                 isExist = true;
                                 break;

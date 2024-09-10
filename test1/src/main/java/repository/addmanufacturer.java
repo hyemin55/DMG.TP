@@ -15,7 +15,6 @@ public class addmanufacturer {
 
     public addmanufacturer(String mBusinessID, String mName, String mAdress, String mPerson,
                            String mPhone, String mDepartment, String mJobTitle) {
-        Manufacturer manufacturer = new Manufacturer();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1,mBusinessID);
