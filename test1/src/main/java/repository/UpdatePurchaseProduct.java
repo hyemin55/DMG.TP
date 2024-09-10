@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class UpdatePurchaseProduct {
     private static HikariDataSource dataSource = HikariCP.createDataSource();
-    String sql = "UPDATE purchaseproduct SET pp_receivedCount = ?  WHERE pp_id = ?";
+    String sql = "UPDATE purchaseProduct SET pp_receivedCount = ?  WHERE pp_id = ?";
 
     public UpdatePurchaseProduct(int updateppId, int updateppReceivedCount) {
         try (Connection connection = dataSource.getConnection();
