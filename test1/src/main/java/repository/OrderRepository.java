@@ -4,10 +4,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import config.HikariCP;
 import domain.OrderItemDto;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -22,10 +19,11 @@ public class OrderRepository {
      * @param m_id 공장직원 ID
      * @param orderItemDtos 주문한 제품ID 및 수량
      */
-    public void insertOrder(int w_id, int m_id, List<OrderItemDto> orderItemDtos) {
+    public boolean insertOrder(int w_id, int m_id, List<OrderItemDto> orderItemDtos) {
 
         Connection conn = null;
         PreparedStatement pstmt = null;
+        String stockCheckQuery = "select p_amount from product where p_id = ? for update";
         try {
             conn = dataSource.getConnection();
 
@@ -38,8 +36,20 @@ public class OrderRepository {
             제조일자 now - 7
             유통기한 now + 365
              */
-
             for (OrderItemDto orderItem : orderItemDtos) {
+                pstmt = conn.prepareStatement(stockCheckQuery);
+                pstmt.setInt(1, orderItem.getP_id());
+                ResultSet rs = pstmt.executeQuery();
+                if(rs.next()) {
+                    int stockAmount = rs.getInt("p_amount");
+
+                    if (stockAmount - orderItem.getP_amount() < 0) {
+                        System.out.println("제품 ID: " + orderItem.getP_id() + "번의 재고 수량이 부족합니다");
+                        return false;
+                    }
+                }
+
+
                 pstmt = conn.prepareStatement(
                         "insert into purchaseProduct(pp_orderDate, pp_receivedDate, pp_costPrice, pp_sellingPrice, " +
                                 "pp_receivedCount, pp_manufactureDate, pp_expirationDate, m_id, w_id, p_id) "
@@ -63,15 +73,16 @@ public class OrderRepository {
 
             for (OrderItemDto orderItemDto : orderItemDtos) {
                 pstmt = conn.prepareStatement(
-                        "update product set p_amount = ? where p_id = ?"
+                        "update product set p_amount = p_amount - ? where p_id = ?"
                 );
                 pstmt.setInt(1, orderItemDto.getP_amount());
                 pstmt.setInt(2, orderItemDto.getP_id());
+
                 pstmt.executeUpdate();
             }
 
             conn.commit();
-
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -90,5 +101,6 @@ public class OrderRepository {
                 e.printStackTrace();
             }
         }
+        return false;
     }
 }

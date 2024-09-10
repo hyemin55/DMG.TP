@@ -18,10 +18,14 @@ public class ConfirmOrderState implements State {
     public void handle(SwitchContext context, int input) {
         if (input == 1) {
             OrderRepository orderRepository = new OrderRepository();
-            orderRepository.insertOrder(parentState.getW_id(),
+            boolean isCompleted = orderRepository.insertOrder(parentState.getW_id(),
                     parentState.getM_id(),
                     parentState.getOrderItemDtos());
-            System.out.println("주문이 정상적으로 입력되었습니다.");
+            if(isCompleted) {
+                System.out.println("주문이 정상적으로 입력되었습니다.");
+            } else {
+                System.out.println("주문 시 오류가 발생하였습니다.");
+            }
         } else {
             System.out.println("주문이 취소되었습니다.");
         }
