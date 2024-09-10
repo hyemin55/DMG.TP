@@ -11,16 +11,16 @@ import java.util.List;
 
 public class DeleteRepository extends JDBCTemplate {
 
-    private int p_id;
+    private int pp_id;
 
-    public DeleteRepository(int p_id) {
-        this.p_id = p_id;
+    public DeleteRepository(int pp_id) {
+        this.pp_id = pp_id;
     }
 
     public void delete(){
         execute("""
-                DELETE FROM purchaseproduct
-                WHERE p_id = ?
+                DELETE FROM purchaseProduct
+                WHERE pp_id = ?
                 """);
     }
 
@@ -45,6 +45,6 @@ public class DeleteRepository extends JDBCTemplate {
     }
 
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
-        pstmt.setString(1, String.valueOf(p_id));
+        pstmt.setString(1, String.valueOf(pp_id));
     }
 }

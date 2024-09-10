@@ -2,6 +2,7 @@ import domain.*;
 import repository.*;
 import repository.ManufacturerRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,11 +69,14 @@ public class Main {
                                         PP_PnameRepository pp_pnameRepository = new PP_PnameRepository(p_id);
                                         pp_pnameRepository.selectPP_PnameRepository();
                                     case 5:
-                                        ProductRepository vvs = new ProductRepository();
-                                        vvs.selectproduct();
-                                        System.out.println("삭제하실 상품 id을 골라주세요");
-                                         p_id= scan.nextInt();
-                                        DeleteRepository deleteRepository = new DeleteRepository(p_id);
+                                        LocalDate now = LocalDate.now();
+                                        String dYear = ""+now.getYear();
+                                        String dMonth = now.getMonthValue()<10? "0"+now.getMonthValue() : ""+now.getMonthValue();
+                                        PurchaseProductRepository vvs = new PurchaseProductRepository(dYear, dMonth);
+                                        vvs.selectPurchaseProduct();
+                                        System.out.println("삭제하실 발주번호(pp_id)을 골라주세요");
+                                        int pp_id= scan.nextInt();
+                                        DeleteRepository deleteRepository = new DeleteRepository(pp_id);
                                         deleteRepository.delete();
 
                                     case 6:
