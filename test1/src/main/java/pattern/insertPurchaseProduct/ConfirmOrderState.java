@@ -2,7 +2,6 @@ package pattern.insertPurchaseProduct;
 
 import domain.OrderItemDto;
 import pattern.InitState;
-import pattern.InsertOrderState;
 import pattern.State;
 import pattern.SwitchContext;
 import repository.OrderRepository;

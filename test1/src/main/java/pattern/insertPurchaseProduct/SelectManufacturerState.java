@@ -1,11 +1,8 @@
 package pattern.insertPurchaseProduct;
 
-import domain.Manufacturer;
-import pattern.InsertOrderState;
 import pattern.State;
 import pattern.SwitchContext;
 import repository.ManufacturerRepository;
-import repository.WholesalerRepository;
 
 public class SelectManufacturerState implements State {
     private InsertOrderState parentState;

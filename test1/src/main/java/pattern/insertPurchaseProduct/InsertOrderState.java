@@ -1,8 +1,10 @@
-package pattern;
+package pattern.insertPurchaseProduct;
 
 import domain.OrderItemDto;
 import lombok.Getter;
 import lombok.Setter;
+import pattern.State;
+import pattern.SwitchContext;
 import pattern.insertPurchaseProduct.ConfirmOrderState;
 import pattern.insertPurchaseProduct.SelectManufacturerState;
 import pattern.insertPurchaseProduct.SelectProductState;

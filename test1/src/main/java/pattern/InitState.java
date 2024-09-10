@@ -1,5 +1,8 @@
 package pattern;
 
+import pattern.inquiries.InquiriesState;
+import pattern.insertPurchaseProduct.InsertOrderState;
+
 public class InitState implements State {
 
     @Override
