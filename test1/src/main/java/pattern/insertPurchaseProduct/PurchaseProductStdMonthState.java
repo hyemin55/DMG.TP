@@ -1,5 +1,7 @@
-package pattern;
+package pattern.insertPurchaseProduct;
 
+import pattern.State;
+import pattern.SwitchContext;
 import repository.PurchaseProductRepository;
 
 import static pattern.SwitchContext.SCANNER;

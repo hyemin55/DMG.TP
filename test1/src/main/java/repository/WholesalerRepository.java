@@ -1,7 +1,5 @@
 package repository;
 
-import com.zaxxer.hikari.HikariDataSource;
-import config.HikariCP;
 import domain.Wholesaler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

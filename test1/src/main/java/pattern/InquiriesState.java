@@ -1,6 +1,6 @@
 package pattern;
 
-import domain.Wholesaler;
+import pattern.insertPurchaseProduct.PurchaseProductInquiresState;
 import repository.ProductRepository;
 import repository.WholesalerRepository;
 

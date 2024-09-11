@@ -1,6 +1,7 @@
 package repository;
 
 import domain.PurchaseProductJoinQuery;
+import domain.SelectPurchaseProduct;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,28 +20,26 @@ public class PurchaseProductRepository extends JDBCTemplate {
     }
 
     public void selectPurchaseProduct() {
-       execute("SELECT pp.pp_id, pp.pp_orderDate, pp.pp_receivedDate, p.p_name, pp.pp_costPrice, pp.pp_receivedCount, pp.pp_manufactureDate, pp.pp_expirationDate, p.p_amount, p.p_etc\n" +
-               "FROM product p, purchaseProduct pp\n" +
-               "where p.p_id = pp.p_id and pp_orderDate like ?");
+       execute("select * from selectPurchaseProduct where pp_orderDate like ?");
     }
 
     @Override
     protected void handleResultSet(ResultSet rs) throws SQLException {
-        List<PurchaseProductJoinQuery> list = new ArrayList<>();
-        while (rs.next()) {
-
-            PurchaseProductJoinQuery purchaseProductJoinQuery = new PurchaseProductJoinQuery();
-            purchaseProductJoinQuery.setPp_id(rs.getInt("pp_id"));
-            purchaseProductJoinQuery.setPp_orderDate(rs.getDate("pp_orderDate"));
-            purchaseProductJoinQuery.setPp_receivedDate(rs.getDate("pp_receivedDate"));
-            purchaseProductJoinQuery.setPp_costPrice(rs.getInt("pp_costPrice"));
-            purchaseProductJoinQuery.setP_amount(rs.getInt("p_amount"));
-            purchaseProductJoinQuery.setPp_receivedCount(rs.getInt("pp_receivedCount"));
-            purchaseProductJoinQuery.setPp_manufactureDate(rs.getDate("pp_manufactureDate"));
-            purchaseProductJoinQuery.setPp_expirationDate(rs.getDate("pp_expirationDate"));
-            purchaseProductJoinQuery.setP_name(rs.getString("p_name"));
-            purchaseProductJoinQuery.setP_etc(rs.getString("p_etc"));
-            list.add(purchaseProductJoinQuery);
+        List<SelectPurchaseProduct> list = new ArrayList<>();
+            while(rs.next()){
+                SelectPurchaseProduct selectPurchaseProduct = new SelectPurchaseProduct();
+                selectPurchaseProduct.setPp_id(rs.getInt("pp_id"));
+                selectPurchaseProduct.setPp_orderDate(rs.getDate("pp_orderDate"));
+                selectPurchaseProduct.setPp_receivedDate(rs.getDate("pp_receivedDate"));
+                selectPurchaseProduct.setM_name(rs.getString("m_name"));
+                selectPurchaseProduct.setW_name(rs.getString("w_name"));
+                selectPurchaseProduct.setP_kind(rs.getInt("p_kind"));
+                selectPurchaseProduct.setP_brand(rs.getString("p_brand"));
+                selectPurchaseProduct.setP_capacity(rs.getInt("p_capacity"));
+                selectPurchaseProduct.setPp_costPrice(rs.getInt("pp_costPrice"));
+                selectPurchaseProduct.setP_name(rs.getString("p_name"));
+                selectPurchaseProduct.setPp_receivedCount(rs.getInt("pp_receivedCount"));
+                list.add(selectPurchaseProduct);
         }
         list.stream().forEach(System.out::println);
     }

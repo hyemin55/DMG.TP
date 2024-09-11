@@ -48,7 +48,6 @@ CREATE TABLE `purchaseProduct` (
     FOREIGN KEY (`p_id`) REFERENCES `product`(`p_id`)
 );
 
-
 -- 주문 테이블 (시뮬레이션 고객 주문 기록)
 CREATE TABLE customerOrders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,     -- 주문 고유 ID
@@ -60,3 +59,9 @@ CREATE TABLE customerOrders (
     
     FOREIGN KEY (p_id) REFERENCES product(p_id) ON DELETE CASCADE
 );
+
+create view selectPurchaseProduct as
+select pp.pp_id, pp.pp_orderDate, pp.pp_receivedDate, m.m_name, w.w_name, p.p_kind, p.p_brand, p.p_capacity, pp.pp_costPrice, p.p_name, pp.pp_receivedCount
+from manufacturer m, product p, purchaseProduct pp, wholesaler w
+where m.m_id = pp.m_id and p.p_id = pp.p_id and w.w_id = pp.w_id
+order by pp.pp_id;

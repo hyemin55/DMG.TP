@@ -1,4 +1,7 @@
-package pattern;
+package pattern.insertPurchaseProduct;
+
+import pattern.State;
+import pattern.SwitchContext;
 
 public class PurchaseProductInquiresState implements State {
     @Override
@@ -9,9 +12,9 @@ public class PurchaseProductInquiresState implements State {
         } else if (input == 2) {
 
         } else if (input == 3) {
-
+            switchContext.setState(new PurchaseProductStdWNameState());
         } else if (input == 4) {
-
+            switchContext.setState(new PurchaseProductStdMNameState());
         } else if (input == 5){
             switchContext.goBack();
         } else {

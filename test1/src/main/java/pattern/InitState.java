@@ -8,6 +8,10 @@ public class InitState implements State {
             switchContext.setState(new InsertOrderState());
         } else if (input == 2) {
             switchContext.setState(new InquiriesState());
+        } else if(input == 3) {
+            switchContext.setState(new ModifyState());
+        } else if(input == 4) {
+
         } else {
             switchContext.setState(new EndState());
         }
@@ -18,7 +22,9 @@ public class InitState implements State {
         System.out.println("""
                     1. 발주하기
                     2. 조회하기
-                    3. 종료
+                    3. 수정하기
+                    4. 삭제하기
+                    5. 종료
                     """);
     }
 }
