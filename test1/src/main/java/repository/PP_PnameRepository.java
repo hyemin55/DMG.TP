@@ -48,4 +48,9 @@ public class PP_PnameRepository extends JDBCTemplate {
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
         pstmt.setString(1, String.valueOf(p_id));
     }
+
+    @Override
+    protected void setPrint() {
+
+    }
 }

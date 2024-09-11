@@ -38,4 +38,9 @@ public class ManufacturerRepository extends JDBCTemplate{
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
 
     }
+
+    @Override
+    protected void setPrint() {
+
+    }
 }

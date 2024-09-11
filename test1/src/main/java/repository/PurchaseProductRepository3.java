@@ -45,4 +45,9 @@ public class PurchaseProductRepository3 extends JDBCTemplate {
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
         pstmt.setString(1,"%"+ w_name+"%");
     }
+
+    @Override
+    protected void setPrint() {
+
+    }
 }

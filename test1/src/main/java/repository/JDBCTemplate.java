@@ -23,11 +23,15 @@ public abstract class JDBCTemplate {
                 handleResultSet(rs);
             }
 
+            setPrint();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
+
     protected abstract void handleResultSet(ResultSet rs) throws SQLException;
+
     protected abstract void setParameter(PreparedStatement pstmt) throws SQLException;
+    protected abstract void setPrint();
 }

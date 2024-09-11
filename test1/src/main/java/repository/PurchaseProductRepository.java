@@ -48,4 +48,9 @@ public class PurchaseProductRepository extends JDBCTemplate {
     protected void setParameter(PreparedStatement pstmt) throws SQLException {
         pstmt.setString(1,year + "-" + month + "%");
     }
+
+    @Override
+    protected void setPrint() {
+
+    }
 }

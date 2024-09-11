@@ -1,5 +1,6 @@
 package pattern;
 
+import pattern.deletePurchaseProduct.DeletePurchaseProduct;
 import pattern.inquiries.InquiriesState;
 import pattern.insertPurchaseProduct.InsertOrderState;
 
@@ -13,8 +14,8 @@ public class InitState implements State {
             switchContext.setState(new InquiriesState());
         } else if(input == 3) {
             switchContext.setState(new ModifyState());
-        } else if(input == 4) {
-
+        } else if (input == 4) {
+            switchContext.setState(new DeletePurchaseProduct());
         } else {
             switchContext.setState(new EndState());
         }

@@ -2,6 +2,7 @@ package pattern.inquiries;
 
 import pattern.State;
 import pattern.SwitchContext;
+import pattern.deletePurchaseProduct.DeletePurchaseProduct;
 import repository.ManufacturerRepository;
 import repository.ProductRepository;
 import repository.WholesalerRepository;
@@ -18,10 +19,10 @@ public class InquiriesState implements State {
         } else if (input == 3) {
             WholesalerRepository wholesalerRepository = new WholesalerRepository();
             wholesalerRepository.selectWholesaler();
-        }else if (input == 4) {
+        } else if (input == 4) {
             ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
             manufacturerRepository.selectManufacturer();
-        }else if (input == 5) {
+        } else if (input == 5) {
             switchContext.goBack();
         }
     }

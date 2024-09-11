@@ -35,4 +35,9 @@ public class ProductRepository extends JDBCTemplate {
     protected void setParameter(PreparedStatement pstmt) {
 
     }
+
+    @Override
+    protected void setPrint() {
+
+    }
 }
