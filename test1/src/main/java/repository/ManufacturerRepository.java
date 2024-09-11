@@ -1,18 +1,19 @@
 package repository;
 
+import com.zaxxer.hikari.HikariDataSource;
+import config.HikariCP;
 import domain.Manufacturer;
-
-import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManufacturerRepository extends JDBCTemplate {
+public class ManufacturerRepository extends JDBCTemplate{
+    private static HikariDataSource dataSource = HikariCP.createDataSource();
 
-    public void selectManufacturer() {
-        execute("select * from manufacturer");
+    public void selectManufacturer(){
+        execute( "select * from manufacturer");
     }
 
     @Override
@@ -30,7 +31,7 @@ public class ManufacturerRepository extends JDBCTemplate {
             manufacturer.setM_person(rs.getString("m_person"));
             list.add(manufacturer);
         }
-        list.forEach(System.out::println);
+        list.stream().forEach(System.out::println);
     }
 
     @Override

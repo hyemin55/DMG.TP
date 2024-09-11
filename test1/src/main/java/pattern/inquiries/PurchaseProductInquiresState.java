@@ -1,9 +1,9 @@
-package pattern.insertPurchaseProduct;
+package pattern.inquiries;
 
 import pattern.State;
 import pattern.SwitchContext;
-import pattern.inquiries.PurchaseProductStdMonthState;
-import pattern.inquiries.PurchaseProductStdProductNameState;
+import pattern.insertPurchaseProduct.PurchaseProductStdMNameState;
+import pattern.insertPurchaseProduct.PurchaseProductStdWNameState;
 
 public class PurchaseProductInquiresState implements State {
     @Override

@@ -1,6 +1,5 @@
 package pattern.insertPurchaseProduct;
 
-import pattern.InsertOrderState;
 import pattern.State;
 import pattern.SwitchContext;
 import repository.WholesalerRepository;
