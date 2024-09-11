@@ -16,7 +16,7 @@ public class UpdatePurchaseProduct {
     private static HikariDataSource dataSource = HikariCP.createDataSource();
     String updatePurchaseProductSql = "UPDATE purchaseProduct SET pp_receivedCount = ?  WHERE pp_id = ?";
     String selectPurchaseProductSql = "select p_amount, p_id from purchaseProduct, product where pp_id = ? and purchaseProduct.p_id=product.p_id";
-    String updateProductSql = "UPDATE product SET p_amount = ?  WHERE p_id = ?";
+    String updateProductSql = "UPDATE product SET p_amount = p_amount - ? WHERE p_id = ?";
 
     Connection conn = null;
 
@@ -48,6 +48,10 @@ public class UpdatePurchaseProduct {
                 int p_amount = rs.getInt("p_amount");
                 int addP_amount = p_amount + updateppReceivedCount;
 
+                if(p_amount - updateppReceivedCount < 0) {
+                    System.out.println("재고수량이 부족합니다");
+                    return;
+                }
                 pstmt = conn.prepareStatement(updateProductSql);
                 pstmt.setInt(1, addP_amount);
                 pstmt.setInt(2, p_id);
