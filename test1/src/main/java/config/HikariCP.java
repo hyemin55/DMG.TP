@@ -8,7 +8,7 @@ public class HikariCP {
 
     public static HikariDataSource createDataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3307/alcohol_retail_store");
+        config.setJdbcUrl("jdbc:mysql://192.168.0.191:3307/alcohol_retail_store");
         config.setUsername("root");
         config.setPassword("1234");
 

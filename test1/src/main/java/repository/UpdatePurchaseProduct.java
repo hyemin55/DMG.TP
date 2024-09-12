@@ -75,7 +75,7 @@ public class UpdatePurchaseProduct {
 
 //                System.out.println("수량의차 " + finalAmount);
 //                System.out.println("기존 제품 수량 " + p_amount);
-                if(isAmountPlus && p_amount - finalAmount < 0) {
+                if(!isAmountPlus && p_amount - finalAmount < 0) {
                     System.out.println("재고수량이 부족합니다");
                     conn.rollback();
                     return false;
@@ -83,9 +83,9 @@ public class UpdatePurchaseProduct {
 
 //                System.out.println(isAmountPlus);
                 if(isAmountPlus){
-                    pstmt = conn.prepareStatement(updateProductMinusSql);
-                } else {
                     pstmt = conn.prepareStatement(updateProductPlusSql);
+                } else {
+                    pstmt = conn.prepareStatement(updateProductMinusSql);
                 }
                 pstmt.setInt(1, finalAmount);
                 pstmt.setInt(2, p_id);

@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int customersNumber = 100;
+        int customersNumber = 1000;
         Thread[] threads = new Thread[customersNumber];
 
         for (int i = 0; i < customersNumber; i++) {
